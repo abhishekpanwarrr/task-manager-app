@@ -11,6 +11,7 @@ const Body = () => {
   const [show,setShow] = useState(false)
   const { selectedProject } = useSelectedProjectValue();
   console.log(selectedProject)
+  console.log(show)
   const {projects} = useProjectsValue()
   const {tasks} = useTasks(selectedProject)
   console.log(tasks)
@@ -34,8 +35,9 @@ const Body = () => {
     return (
         <div className='body'> 
           <p className='bodyp' onClick={() => setShow(!show)}><AiOutlinePlus /> <span>Add Task</span></p>
-            {show ? <AddTasks /> : null}
+            {show ? <AddTasks setShow={setShow} /> : null}
          
+         {tasks.length <= 0 && <p style={{textAlign:'center',margin:'0 250px'}}>No task Found!!!</p>}
           <ul className='body_first_list' >
           {tasks.map((task) => (
             <li key={task.id} >

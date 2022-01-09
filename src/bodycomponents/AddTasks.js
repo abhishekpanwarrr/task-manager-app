@@ -7,7 +7,7 @@ import { TaskDate } from '../components/TaskDate';
 import {ProjectData} from '../components/ProjectData'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 
-const AddTasks = () => {
+const AddTasks = ({setShow}) => {
   const [dateBox,setDateBox] = useState(false)
   const [projectDataBox,setProjectDataBox] = useState(false)
   console.log(dateBox)
@@ -40,9 +40,8 @@ const AddTasks = () => {
     })
     setTask('')
     setProject('')
-    setShowProjectOverlay(false)
-
-
+    setShowProjectOverlay(false)  
+    setShow(false)
     return (
       task && projectId && data  
     );
